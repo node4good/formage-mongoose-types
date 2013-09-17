@@ -1,21 +1,24 @@
 {
-  "name": "formage-mongoose-types",
-  "version": "1.0.0",
-  "description": "Some extra types for mongoose, as used by Formage",
-  "main": "mongoose-types.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "\u0016https://github.com/Empeeric/formage-mongoose-types.git"
-  },
-  "keywords": [
-    "nodejs",
-    "formage",
-    "mongoose",
-    "plugins"
-  ],
-  "author": "Refael Ackermann <refael@empeeric.com>",
-  "license": "MIT"
+    "name": "formage-mongoose-types",
+    "version": "1.0.0",
+    "description": "Some extra types for mongoose, as used by Formage",
+    "main": "mongoose-types.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "\u0016https://github.com/Empeeric/formage-mongoose-types.git"
+    },
+    "keywords": [
+        "nodejs",
+        "formage",
+        "mongoose",
+        "plugins"
+    ],
+    "dependencies": {
+        "lodash": "~2.0.0"
+    },
+    "author": "Refael Ackermann <refael@empeeric.com>",
+    "license": "MIT"
 }

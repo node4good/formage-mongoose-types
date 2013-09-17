@@ -1,9 +1,19 @@
 'use strict';
 if (!module.parent) console.error('Please don\'t call me directly.I am just the main app\'s minion.') || process.process.exit(1);
-
-var util = require('util');
-var mongoose = require.main.require('mongoose');
 var _ = require('lodash');
+
+
+exports.mockTypes = function () {
+    var types = {
+        File: Object,
+        Picture: Object,
+        Integer: Number,
+        GeoPoint: Object,
+        Text: String,
+        Html: String
+    };
+    _.assign(module.mongoose.Schema.Types, types);
+};
 
 
 var CDN_PREFIX = '';
@@ -13,6 +23,9 @@ exports.setCdnPrefix = function (prefix) {
 
 
 exports.loadTypes = _.once(function () {
+    var util = require('util');
+    var mongoose = require.main.require('mongoose');
+
     var File = function File (path, options) {
         File.super_.call(this, path, options);
     };
