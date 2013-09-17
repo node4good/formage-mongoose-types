@@ -1,9 +1,13 @@
 'use strict';
-if (!module.parent) console.error('Please don\'t call me directly.I am just the main app\'s minion.') || process.process.exit(1);
+var util = require('util');
 var _ = require('lodash');
 
 
 exports.mockTypes = function () {
+    var mongoose = require.main.require('mongoose');
+    exports.mockTypes_DI(mongoose);
+};
+exports.mockTypes_DI = function (mongoose) {
     var types = {
         File: Object,
         Picture: Object,
@@ -12,20 +16,16 @@ exports.mockTypes = function () {
         Text: String,
         Html: String
     };
-    _.assign(module.mongoose.Schema.Types, types);
+    _.assign(mongoose.Schema.Types, types);
 };
 
 
-var CDN_PREFIX = '';
-exports.setCdnPrefix = function (prefix) {
-    CDN_PREFIX = prefix;
-};
 
-
-exports.loadTypes = _.once(function () {
-    var util = require('util');
+exports.loadTypes = function () {
     var mongoose = require.main.require('mongoose');
-
+    exports.loadTypes_DI(mongoose);
+};
+exports.loadTypes_DI = _.once(function (mongoose) {
     var File = function File (path, options) {
         File.super_.call(this, path, options);
     };
@@ -130,3 +130,9 @@ exports.loadTypes = _.once(function () {
     mongoose.Types.Html = String;
     mongoose.Schema.Types.Html = Html;
 });
+
+
+var CDN_PREFIX = '';
+exports.setCdnPrefix = function (prefix) {
+    CDN_PREFIX = prefix;
+};
